@@ -1,0 +1,17 @@
+void setup(){
+  size(600,600); // set screen size
+  background(35); // set background color
+  float a, b, c, d, start, stop; // set random values
+
+  stroke(0,255,0); // stroke color for line
+  strokeWeight(2); // stroke width for line
+  line (600,0, 450, 600); // location of the line
+  
+  
+  noFill(); // arc with no fill
+  arc(400, 400, 300, 300, -HALF_PI, PI);
+}
+
+void draw(){
+  }
+  
