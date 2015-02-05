@@ -1,3 +1,13 @@
+Pesudocode:
+PROGRAM CalculatePoint
+	The Eighth point is located halfway between the two points;
+	An arc has its center at the first point;
+	The arc has a radius equal to the distance between the first and the seventh points; 
+	The arc would cross a line from the upper right corner to a point halfway between the midpoint of the bottom side and the lower right corner;
+END
+
+
+
 void setup(){
   size(600,600); // set screen size
   background(35); // set background color
