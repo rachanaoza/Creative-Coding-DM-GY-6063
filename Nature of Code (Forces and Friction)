@@ -3,8 +3,6 @@
 // http://natureofcode.com
 
 PVector wind;
-PVector gravity;
-PVector friction;
 float changeby;
 
 Mover[] movers = new Mover[5]; // creating an array with 5 Mover objects
