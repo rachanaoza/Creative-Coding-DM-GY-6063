@@ -1,0 +1,67 @@
+import ddf.minim.*;
+Minim minim;
+AudioPlayer player;
+
+
+float flag = 0; // to check position of mouse/pointer
+float yvalue[] = new float[800]; // array with size 800
+int count = 1;
+int i;
+
+void setup() {
+  size(800, 800);
+  minim = new Minim(this); 
+  player = minim.loadFile("topgun.mp3"); // load the mp3 file
+  player.loop(); // keep playing the mp3 in a loop
+  calculate();
+}
+
+void draw() {
+  background(75);
+  fill(255); 
+    flag = 0;
+      println("Flag = 0"); 
+  display();
+  move();
+}
+
+void display(){
+    for (int i = 0; i < width; i++) {
+       ellipse(i,yvalue[i]+height/2,20,20); // plotting all the ellipses in the wave
+       if(mouseX != 0)
+       {  
+         float mini = min(yvalue[mouseX]+height/2 +20,yvalue[mouseX]+height/2 -20); // maximum values
+         float maxi = max(yvalue[mouseX]+height/2 +20,yvalue[mouseX]+height/2 -20); // minimum values
+         if(mouseY > mini && mouseY < maxi)
+         {
+           flag = 1;
+           println("INSIDE THE CIRCLE " + count + " Flag: " + flag);
+           // this is for the one moving red ellipse
+           fill(255,0,0); 
+           ellipse(mouseX, yvalue[mouseX]+height/2, 20,20); // plot ellipse according to position of mouse
+           fill(255);          
+           player.play();
+         }       
+       }
+       i=i+5; // spacing between the ellipses
+    }   
+    if(flag == 0) // if mouse hovers outside the curve
+    {
+      player.pause(); // pause the mp3
+    }  
+}
+
+void move(){ // move every ellipse in the wave 1 position backwards
+  float c = yvalue[0];
+  for(int i = 0; i < width-1; i++){    
+    yvalue[i] = yvalue[i+1]; 
+  }
+  yvalue[width-1] = c;
+}
+
+void calculate(){ // calculate the position of each ellipse in the wave
+    for (int i = 0; i < width; i++){   
+     float xvalue = map(i,0,width,0,TWO_PI*2);
+     yvalue[i] = sin(xvalue)*140; 
+    }
+}
