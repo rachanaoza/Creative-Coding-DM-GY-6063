@@ -6,7 +6,6 @@ AudioPlayer player;
 float flag = 0; // to check position of mouse/pointer
 float yvalue[] = new float[800]; // array with size 800
 int count = 1;
-int i;
 
 void setup() {
   size(800, 800);
@@ -19,7 +18,7 @@ void setup() {
 void draw() {
   background(75);
   fill(255); 
-    flag = 0;
+    flag = 0; // mouse is outside the wave of ellipses
       println("Flag = 0"); 
   display();
   move();
@@ -36,7 +35,7 @@ void display(){
          {
            flag = 1;
            println("INSIDE THE CIRCLE " + count + " Flag: " + flag);
-           // this is for the one moving red ellipse
+           // this is for the one moving red ellipse (for game purpose)
            fill(255,0,0); 
            ellipse(mouseX, yvalue[mouseX]+height/2, 20,20); // plot ellipse according to position of mouse
            fill(255);          
@@ -52,11 +51,11 @@ void display(){
 }
 
 void move(){ // move every ellipse in the wave 1 position backwards
-  float c = yvalue[0];
+  float c = yvalue[0]; // this is the first array
   for(int i = 0; i < width-1; i++){    
     yvalue[i] = yvalue[i+1]; 
   }
-  yvalue[width-1] = c;
+  yvalue[width-1] = c; // assign last value to first value
 }
 
 void calculate(){ // calculate the position of each ellipse in the wave
