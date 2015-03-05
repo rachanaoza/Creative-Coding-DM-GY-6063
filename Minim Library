@@ -60,7 +60,7 @@ void move(){ // move every ellipse in the wave 1 position backwards
 
 void calculate(){ // calculate the position of each ellipse in the wave
     for (int i = 0; i < width; i++){   
-     float xvalue = map(i,0,width,0,TWO_PI*2);
-     yvalue[i] = sin(xvalue)*140; 
+     float xvalue = map(i,0,width,0,TWO_PI*2); // mapping from width to PI
+     yvalue[i] = sin(xvalue)*140; // plotting the ellipse
     }
 }
